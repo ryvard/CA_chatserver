@@ -22,6 +22,7 @@ public class ClientThread extends Thread
     Socket clientSocket;
     int clientID;
     ArrayList<String> users = new ArrayList();
+    String user;
 
     public ClientThread(Socket clientSocket, int clientID)
     {
@@ -53,7 +54,7 @@ public class ClientThread extends Thread
                 if(msg.startsWith("LOGIN:"))
                 {
                     String[] splitArr = msg.split(":");
-                    String user = splitArr[1];
+                    user = splitArr[1];
                     users.add(user);
                     writer.println("Du er nu logget ind som "+user);
                 }
@@ -63,7 +64,8 @@ public class ClientThread extends Thread
                     writer.println("HEJ MED DIG");
                 }
                 writer.println("message recieved");
-                msg = scan.nextLine();
+                msg = user+": " + scan.nextLine();
+                System.out.println("msg: "+msg);
             }
             scan.close();
             writer.close();
