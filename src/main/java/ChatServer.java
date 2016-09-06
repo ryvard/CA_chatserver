@@ -34,11 +34,13 @@ public class ChatServer {
             } catch (Exception ex) {
                 System.out.println(ex);
             }
+        
         }
 
     
 
     private void runServer(String ip, int portNumb) {
+        int id = 0;
         this.ip = ip;
         this.portNumb = portNumb;
                
@@ -49,11 +51,16 @@ public class ChatServer {
             serverSocket.bind(new InetSocketAddress(ip, portNumb));
 
             while (keepRunning) {
-
+                
                 Socket socket = serverSocket.accept();
-                System.out.println("Connect to a client");
+                ClientThread ct = new ClientThread(socket,id++);
+                ct.start();
+                System.out.println("Connect to a client" + id);
                 
             }
+            
+            
+            
 
         } catch (IOException ex) {
             System.out.println(ex);
