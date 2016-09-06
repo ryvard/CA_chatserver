@@ -56,8 +56,9 @@ public class ClientThread extends Thread
                     String[] splitArr = msg.split(":");
                     user = splitArr[1];
                     users.add(user);
-                    writer.println("Du er nu logget ind som "+user);
+                    writer.println("Du er nu logget ind som '"+user+"'");
                 }
+                
                 System.out.println("I WHILE LOOP");
                 if(msg.equals("HEJ"))
                 {
