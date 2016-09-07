@@ -1,3 +1,5 @@
+package serverpackage;
+
 
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Jmach
  */
-public class ClientServices implements Subject
+public class ClientServices implements ISubject
 {
 
     private ArrayList observers;
@@ -21,13 +23,13 @@ public class ClientServices implements Subject
     }
 
     @Override
-    public void register(Observer newObserver)
+    public void register(IObserver newObserver)
     {
         observers.add(newObserver);
     }
 
     @Override
-    public void unregister(Observer deleteObservers)
+    public void unregister(IObserver deleteObservers)
     {
         int observerIndex = observers.indexOf(deleteObservers);
         System.out.println("Observer " + observerIndex + " deleted");
@@ -42,7 +44,7 @@ public class ClientServices implements Subject
     {
         for (int i = 0; i < observers.size(); i++)
         {
-            Observer observer = (Observer) observers.get(i);
+            IObserver observer = (IObserver) observers.get(i);
             observer.update();
         }
 
