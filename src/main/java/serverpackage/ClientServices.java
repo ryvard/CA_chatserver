@@ -13,11 +13,11 @@ import java.util.ArrayList;
  */
 public class ClientServices implements ISubject {
 
-    private static ArrayList<IObserver> observers;
+    private static ArrayList<IObserver> observers = new ArrayList();
     static ArrayList<String> users = new ArrayList();
 
     public ClientServices() {
-        observers = new ArrayList();
+        //observers = new ArrayList();
     }
 
     @Override
@@ -48,6 +48,8 @@ public class ClientServices implements ISubject {
 
         for (IObserver observer : observers) {
             observer.update(s);
+            
+            System.out.println("observers length: " +observers.size());
 
         }
 
