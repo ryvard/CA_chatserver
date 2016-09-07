@@ -70,6 +70,10 @@ public class ClientThread extends Thread implements IObserver
                 writer.println("message recieved");
                 msg = user+": " + scan.nextLine();
                 System.out.println("msg: "+msg);
+                
+                if(msg.equals("STOP")) {
+                    break;
+                }
             }
             scan.close();
             writer.close();
