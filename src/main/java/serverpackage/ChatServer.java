@@ -58,6 +58,8 @@ public class ChatServer {
                 ClientThread ct = new ClientThread(socket,id++);
                 cs.register(ct);
                 ct.start();
+                
+                System.out.println("username: "+ct.getUserName());
                 System.out.println("Connect to a client" + id);
                 
             }

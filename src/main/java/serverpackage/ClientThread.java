@@ -86,5 +86,12 @@ public class ClientThread extends Thread implements IObserver
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public String getUserName()
+    {
+        if(user.isEmpty())
+            return "User is not set";
+        return user;
+    }
 
 }
