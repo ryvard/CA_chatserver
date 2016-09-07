@@ -35,11 +35,14 @@ public class ClientServices implements ISubject {
         notifyObserver("CLIENTLIST:" + s);
 
     }
+    
+    public static void removeUser(String user){
+        users.remove(user);
+    }
 
     public static void unregister(IObserver deleteObservers) {
 
         System.out.println("Observer " + deleteObservers + " deleted");
-
         observers.remove(deleteObservers);
 
     }

@@ -67,6 +67,7 @@ public class ClientThread extends Thread implements IObserver {
                 System.out.println("msg: " + msg);
 
             }
+            ClientServices.removeUser(user);
             ClientServices.unregister(this);
             scan.close();
             writer.close();
