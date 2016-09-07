@@ -6,14 +6,19 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Jmach
  */
 public class ClientServices implements Subject
 {
+
     private ArrayList observers;
+
+    public ClientServices()
+    {
+        observers = new ArrayList();
+    }
 
     @Override
     public void register(Observer newObserver)
@@ -26,7 +31,8 @@ public class ClientServices implements Subject
     {
         int observerIndex = observers.indexOf(deleteObservers);
         System.out.println("Observer " + observerIndex + " deleted");
-        if(observerIndex >= 0){
+        if (observerIndex >= 0)
+        {
             observers.remove(observerIndex);
         }
     }
@@ -39,13 +45,13 @@ public class ClientServices implements Subject
             Observer observer = (Observer) observers.get(i);
             observer.update();
         }
-        
+
     }
-    
-    public void observerListChange(ArrayList observers){
+
+    public void observerListChange(ArrayList observers)
+    {
         this.observers = observers;
         notifyObserver();
     }
-    
-    
+
 }

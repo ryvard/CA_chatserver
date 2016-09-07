@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author miaryvard
  */
-public class ClientThread extends Thread
+public class ClientThread extends Thread implements Observer
 {
 
     Socket clientSocket;
@@ -77,6 +77,12 @@ public class ClientThread extends Thread
             Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    @Override
+    public void update()
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

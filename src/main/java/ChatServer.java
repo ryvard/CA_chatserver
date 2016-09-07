@@ -20,7 +20,7 @@ public class ChatServer {
     private String ip;
     private int portNumb;
     private boolean keepRunning = true;
-
+    private ClientServices cs = new ClientServices();
     public static void main(String[] args) {
         
         try {
@@ -54,6 +54,7 @@ public class ChatServer {
                 
                 Socket socket = serverSocket.accept();
                 ClientThread ct = new ClientThread(socket,id++);
+                cs.register(ct);
                 ct.start();
                 System.out.println("Connect to a client" + id);
                 
