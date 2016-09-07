@@ -59,7 +59,7 @@ public class ChatServer {
                 cs.register(ct);
                 ct.start();
                 
-                System.out.println("username: "+ct.getUserName());
+                //System.out.println("username: "+ct.getUserName());
                 System.out.println("Connect to a client" + id);
                 
             }

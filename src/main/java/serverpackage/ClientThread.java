@@ -59,6 +59,7 @@ public class ClientThread extends Thread implements IObserver
                     user = splitArr[1];
                     users.add(user);
                     writer.println("Du er nu logget ind som '"+user+"'");
+                    System.out.println("username log: "+ getUserName());
                 }
                 
                 System.out.println("I WHILE LOOP");
@@ -91,6 +92,7 @@ public class ClientThread extends Thread implements IObserver
     {
         if(user.isEmpty())
             return "User is not set";
+        System.out.println("username: "+ user);
         return user;
     }
 
