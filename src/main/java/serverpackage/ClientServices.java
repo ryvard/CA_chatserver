@@ -38,6 +38,11 @@ public class ClientServices implements ISubject {
     
     public static void removeUser(String user){
         users.remove(user);
+        String s = "";
+        for (String username : users) {
+            s += username + ",";
+        }
+        notifyObserver("CLIENTLIST:" + s);
     }
 
     public static void unregister(IObserver deleteObservers) {

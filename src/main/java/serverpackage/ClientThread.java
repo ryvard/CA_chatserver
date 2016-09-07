@@ -52,8 +52,13 @@ public class ClientThread extends Thread implements IObserver {
                     String[] splitArr = msg.split(":");
                     user = splitArr[1];
                     ClientServices.adduser(user);
-                    writer.println("Du er nu logget ind som '" + user + "'");
-                    System.out.println("username log: " + getUserName());
+                    System.out.println("username før"+this.getName());
+                    this.setName(user);
+                    writer.println("Du er nu logget ind som '" + this.getName() + "'");
+                     
+                 
+                    System.out.println("username log: " + this.getName());
+                 
                 }
 
                 System.out.println("I WHILE LOOP");
@@ -67,6 +72,7 @@ public class ClientThread extends Thread implements IObserver {
                 System.out.println("msg: " + msg);
 
             }
+            
             ClientServices.removeUser(user);
             ClientServices.unregister(this);
             scan.close();

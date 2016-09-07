@@ -58,6 +58,8 @@ public class ChatServer {
                 ClientThread ct = new ClientThread(socket,id++);
                 cs.register(ct);
                 ct.start();
+                ct.setName("min tråd");
+                System.out.println("hvad hedder tråden: "+ct.getName());
                 
                 
                 //System.out.println("username: "+ct.getUserName());
