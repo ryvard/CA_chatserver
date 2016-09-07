@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ClientServices implements ISubject {
 
-    private static ArrayList<IObserver> observers = new ArrayList();
+    private static ArrayList<IObserver> observers = new ArrayList(); // måske: skift IObserver ud med ClientThread
     static ArrayList<String> users = new ArrayList();
 
     public ClientServices() {
