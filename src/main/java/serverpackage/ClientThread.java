@@ -90,7 +90,7 @@ public class ClientThread extends Thread implements IObserver
     @Override
     public void update()
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     public String getUserName()
