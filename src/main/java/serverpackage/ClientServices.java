@@ -26,13 +26,13 @@ public class ClientServices implements ISubject {
 
     }
 
-    public static void adduser(String user) {
-        users.add(user);
-        String s = "";
-        for (String username : users) {
-            s += username + ",";
-        }
-        notifyObserver("CLIENTLIST:" + s);
+//    public static void adduser(String user) {
+//        users.add(user);
+//        String s = "";
+//        for (String username : users) {
+//            s += username + ",";
+//        }
+//        notifyObserver("CLIENTLIST:" + s);
 
     }
     
