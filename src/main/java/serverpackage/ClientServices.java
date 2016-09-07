@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ClientServices implements ISubject {
 
     private static ArrayList<IObserver> observers = new ArrayList();
-    static ArrayList<String> users = new ArrayList();
+//    static ArrayList<String> users = new ArrayList();
 
     public ClientServices() {
         //observers = new ArrayList();
@@ -23,7 +23,11 @@ public class ClientServices implements ISubject {
     @Override
     public void register(IObserver newObserver) {
         observers.add(newObserver);
-
+        String s = "";
+        for(IObserver observer : observers){
+            s += observer.getName;
+        }
+        notifyObserver("CLIENTLIST:" + s);
     }
 
 //    public static void adduser(String user) {
@@ -34,16 +38,16 @@ public class ClientServices implements ISubject {
 //        }
 //        notifyObserver("CLIENTLIST:" + s);
 
-    }
+//    }
     
-    public static void removeUser(String user){
-        users.remove(user);
-        String s = "";
-        for (String username : users) {
-            s += username + ",";
-        }
-        notifyObserver("CLIENTLIST:" + s);
-    }
+//    public static void removeUser(String user){
+//        users.remove(user);
+//        String s = "";
+//        for (String username : users) {
+//            s += username + ",";
+//        }
+//        notifyObserver("CLIENTLIST:" + s);
+//    }
 
     public static void unregister(IObserver deleteObservers) {
 
@@ -58,6 +62,7 @@ public class ClientServices implements ISubject {
             observer.update(s);
             
             System.out.println("observers length: " +observers.size());
+            System.out.println("observer name: " + observer.toString());
 
         }
 
