@@ -1,0 +1,103 @@
+[33mcommit 942551d5574e4fe61f80569450b40afa75dd40ad[m
+Author: Bruger <Bruger>
+Date:   Wed Sep 7 10:24:00 2016 +0200
+
+    Rettede Observer til IObserver
+
+[33mcommit fbe5d65711f39896c53a1c6b428283277eccde69[m
+Merge: 8e5a12c 09bb412
+Author: Jonas Machon <Jonas Machon>
+Date:   Wed Sep 7 10:07:22 2016 +0200
+
+    Merge branch 'master' of https://github.com/ryvard/CA_chatserver
+
+[33mcommit 8e5a12cfa3d4ccef1a0283a81f8c15d3e8c019c3[m
+Author: Jonas Machon <Jonas Machon>
+Date:   Wed Sep 7 10:06:48 2016 +0200
+
+    observer 2
+
+[33mcommit 09bb412e3e39e7e85d0c54202ca7cdaa0348a894[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Wed Sep 7 09:12:11 2016 +0200
+
+    creating packages
+
+[33mcommit ec8b7358196e30bdefa0eeec3cf5c6ddcb1bc92b[m
+Author: Jonas Machon <Jonas Machon>
+Date:   Tue Sep 6 21:12:23 2016 +0200
+
+    Observer interface implement
+
+[33mcommit 5e413531a1c5adabee6e88aa719083f98a66b45b[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 16:01:59 2016 +0200
+
+    nothing change
+
+[33mcommit ba252526ce634c36c4ea31f9b6cfe5e60d278612[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 14:44:27 2016 +0200
+
+    ClientThread
+
+[33mcommit 19a2fe5454dd7e96992c57933c0d86e6d282aeba[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 14:42:29 2016 +0200
+
+    Creating ClientThread class
+
+[33mcommit 9de130450371ac8a653a3f816ee4c292d1321735[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 14:25:55 2016 +0200
+
+    Creating ClientThread class
+
+[33mcommit 90bd68a71e86d978548797bf43047698f5f26434[m
+Author: eblomst <emma.blomsterberg@hotmail.com>
+Date:   Tue Sep 6 11:15:26 2016 +0200
+
+    Merge origin/master
+    
+    Conflicts:
+            src/main/java/ChatServer.java
+
+[33mcommit 274d4354589e982f28a5684ad5b4686fb4820725[m
+Merge: 1155c5e 173ce05
+Author: eblomst <emma.blomsterberg@hotmail.com>
+Date:   Tue Sep 6 11:15:18 2016 +0200
+
+    Merge origin/master
+    
+    Conflicts:
+            src/main/java/ChatServer.java
+
+[33mcommit 1155c5e10d6b884388eafcfeeaa6d359e455e174[m
+Author: eblomst <emma.blomsterberg@hotmail.com>
+Date:   Tue Sep 6 11:12:46 2016 +0200
+
+    Socket - runServer() and main
+
+[33mcommit 173ce05cd57513121c0b5520c14665e12ddeec5b[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 11:06:55 2016 +0200
+
+    forsøg på at oprette gitignore fil
+
+[33mcommit 4a5f8cc98a305861f4659572d6d67836e053e2ab[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 09:50:26 2016 +0200
+
+    Creating ChatServer class
+
+[33mcommit c0f0a5dc6e3cc47ad1ead7893127f70673aa6036[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 09:41:36 2016 +0200
+
+    First commit.1
+
+[33mcommit f5f87d9924ca1c51c85e97ad5866a1650ea05c21[m
+Author: Mia Ryvard <cph-mr279@cphbusiness.dk>
+Date:   Tue Sep 6 09:30:27 2016 +0200
+
+    First commit

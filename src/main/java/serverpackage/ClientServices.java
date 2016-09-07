@@ -1,6 +1,5 @@
 package serverpackage;
 
-
 import java.util.ArrayList;
 
 /*
@@ -12,48 +11,54 @@ import java.util.ArrayList;
  *
  * @author Jmach
  */
-public class ClientServices implements ISubject
-{
+public class ClientServices implements ISubject {
 
-    private ArrayList observers;
+    private static ArrayList<IObserver> observers;
+    static ArrayList<String> users = new ArrayList();
 
-    public ClientServices()
-    {
+    public ClientServices() {
         observers = new ArrayList();
     }
 
     @Override
-    public void register(IObserver newObserver)
-    {
+    public void register(IObserver newObserver) {
         observers.add(newObserver);
+
     }
 
-    @Override
-    public void unregister(IObserver deleteObservers)
-    {
-        int observerIndex = observers.indexOf(deleteObservers);
-        System.out.println("Observer " + observerIndex + " deleted");
-        if (observerIndex >= 0)
-        {
-            observers.remove(observerIndex);
+    public static void adduser(String user) {
+        users.add(user);
+        String s = "";
+        for (String username : users) {
+            s += username + ",";
         }
+        notifyObserver("CLIENTLIST:" + s);
+
     }
 
-    @Override
-    public void notifyObserver()
-    {
-        for (int i = 0; i < observers.size(); i++)
-        {
-            IObserver observer = (IObserver) observers.get(i);
-            observer.update();
+    public static void unregister(IObserver deleteObservers) {
+
+        System.out.println("Observer " + deleteObservers + " deleted");
+
+        observers.remove(deleteObservers);
+
+    }
+
+    public static void notifyObserver(String s) {
+
+        for (IObserver observer : observers) {
+            observer.update(s);
+
         }
 
     }
 
-    public void observerListChange(ArrayList observers)
-    {
-        this.observers = observers;
-        notifyObserver();
+    public static void notifyObserver(String s, String username) {
+
+    }
+
+    public static void notifyObserver(String s, String[] username) {
+
     }
 
 }

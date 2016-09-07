@@ -16,7 +16,11 @@ import serverpackage.IObserver;
 public interface ISubject
 {
     public void register(IObserver o);
-    public void unregister(IObserver o);
-    public void notifyObserver();
+    public static void unregister(IObserver o){
+        
+    };
+    public static void notifyObserver(String s){
+        
+    };
     
 }

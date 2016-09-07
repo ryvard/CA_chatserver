@@ -12,5 +12,5 @@ package serverpackage;
  */
 public interface IObserver
 {
-    public void update();
+    public void update(String s);
 }
