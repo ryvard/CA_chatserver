@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Jmach
  */
-public class ClientServices implements ISubject {
+public class ClientServices extends Thread implements ISubject {
 
     private static ArrayList<IObserver> observers = new ArrayList();
 //    static ArrayList<String> users = new ArrayList();
@@ -25,8 +25,11 @@ public class ClientServices implements ISubject {
         observers.add(newObserver);
         String s = "";
         for(IObserver observer : observers){
-            s += observer.getName;
+            Thread tObserver = (Thread) observer;
+            s += tObserver.getName() + ",";
         }
+        System.out.println("Size" + observers.size());
+        System.out.println("list names " + s );
         notifyObserver("CLIENTLIST:" + s);
     }
 

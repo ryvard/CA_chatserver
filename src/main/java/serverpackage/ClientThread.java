@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author miaryvard
  */
-public class ClientThread extends IObserver implements IObserver {
+public class ClientThread extends Thread implements IObserver {
 
     Socket clientSocket;
     int clientID;
@@ -45,7 +45,8 @@ public class ClientThread extends IObserver implements IObserver {
             writer = new PrintWriter(clientSocket.getOutputStream(), true);
             writer.println("Du skal logge ind - f.eks. LOGIN:<username>");
             String msg = scan.nextLine();
-
+            
+            cs.register(this);
             while (!msg.equals("LOGOUT:")) {
 
                 if (msg.startsWith("LOGIN:")) {
@@ -54,6 +55,8 @@ public class ClientThread extends IObserver implements IObserver {
 //                    ClientServices.adduser(user);
                     System.out.println("username før"+this.getName());
                     this.setName(user);
+                    System.out.println("navn: " + this.getName());
+                    
                     writer.println("Du er nu logget ind som '" + this.getName() + "'");
                      
                  

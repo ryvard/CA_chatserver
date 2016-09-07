@@ -56,14 +56,14 @@ public class ChatServer {
                 
                 Socket socket = serverSocket.accept();
                 ClientThread ct = new ClientThread(socket,id++);
-                cs.register(ct);
+//                cs.register(ct);
                 ct.start();
-                ct.setName("min tråd");
+//                ct.setName("min tråd");
                 System.out.println("hvad hedder tråden: "+ct.getName());
                 
                 
                 //System.out.println("username: "+ct.getUserName());
-                System.out.println("Connect to a client" + id);
+//                System.out.println("Connect to a client" + id);
                 
             }
             
