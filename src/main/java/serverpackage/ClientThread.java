@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author miaryvard
  */
-public class ClientThread extends Thread implements Observer
+public class ClientThread extends Thread implements IObserver
 {
 
     Socket clientSocket;
