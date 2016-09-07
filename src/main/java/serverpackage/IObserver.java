@@ -1,3 +1,5 @@
+package serverpackage;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,10 +10,7 @@
  *
  * @author Jmach
  */
-public interface Subject
+public interface IObserver
 {
-    public void register(Observer o);
-    public void unregister(Observer o);
-    public void notifyObserver();
-    
+    public void update();
 }
