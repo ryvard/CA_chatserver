@@ -19,16 +19,15 @@ public class SimpleServerClient
         Scanner scan = new Scanner(s1.getInputStream());
         PrintWriter writer = new PrintWriter(s1.getOutputStream(), true);
         
-        String msg = scan.nextLine();
-        System.out.println("server msg:"+ msg);
         writer.println("LOGIN:MIA");
-        System.out.println("efter login: "+scan.nextLine());
         System.out.println(scan.nextLine());
         writer.println("MSG::HEJ");
         System.out.println(scan.nextLine());
+        writer.println("MSG:MIA:HEJ MIA");
         System.out.println(scan.nextLine());
-        writer.println("LOGOUT:");
         
+        writer.println("LOGOUT:");
+               
         scan.close();
         writer.close();
         s1.close();
