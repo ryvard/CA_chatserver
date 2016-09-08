@@ -38,7 +38,7 @@ public class ClientThread extends Thread implements IObserver
         {
             Scanner scan = new Scanner(clientSocket.getInputStream());
             writer = new PrintWriter(clientSocket.getOutputStream(), true);
-            writer.println("Du skal logge ind - f.eks. LOGIN:<username>");
+            //writer.println("Du skal logge ind - f.eks. LOGIN:<username>");
 
             String msg = scan.nextLine();
             String[] splitArr = msg.split(":");
@@ -51,7 +51,7 @@ public class ClientThread extends Thread implements IObserver
                     case "LOGIN":
                         if (splitArr.length < 2)
                         {
-                            writer.println("MISSING username - wrong command");
+                            //writer.println("MISSING username - wrong command");
                             break;
                         }
                         user = splitArr[1];
@@ -59,13 +59,13 @@ public class ClientThread extends Thread implements IObserver
                         this.setName(user);
                         cs.register(this);
                         Logger.getLogger(Log.LOG_NAME).log(Level.INFO,String.format("%1$S set as username and added to observer list ", user));
-                        writer.println("Du er nu logget ind som '" + this.getName() + "'");
+                        //writer.println("Du er nu logget ind som '" + this.getName() + "'");
                         break;
 
                     case "MSG":
                         if (splitArr.length < 3)
                         {
-                            writer.println("MISSING : wrong command");
+                            //writer.println("MISSING : wrong command");
                             break;
                         }
                         if (splitArr[1].isEmpty() || splitArr[1].equals(""))
@@ -96,7 +96,7 @@ public class ClientThread extends Thread implements IObserver
                 }
                 if (!command.equals("LOGIN") && !command.equals("MSG") && !command.equals("HELP"))
                 {
-                    writer.println("INVALID COMMAND");
+                    //writer.println("INVALID COMMAND");
                 }
                 msg = scan.nextLine();
                 splitArr = msg.split(":");
