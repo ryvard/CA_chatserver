@@ -2,73 +2,105 @@ package serverpackage;
 
 import java.util.ArrayList;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Jmach
  */
-public class ClientServices implements ISubject {
+public class ClientServices implements ISubject
+{
+    private static ArrayList<ClientThread> observers = new ArrayList();
+    private static ClientServices clientServices;
 
-    private static ArrayList<IObserver> observers = new ArrayList(); // måske: skift IObserver ud med ClientThread
-    static ArrayList<String> users = new ArrayList();
-
-    public ClientServices() {
-        //observers = new ArrayList();
+    private ClientServices()
+    {
+    }
+    public static ClientServices getClientServices()
+    {
+        if(clientServices == null)
+        {
+            clientServices = new ClientServices();
+        }
+        return clientServices;
     }
 
     @Override
-    public void register(IObserver newObserver) {
+    public void register(ClientThread newObserver)
+    {
         observers.add(newObserver);
-
+        getClientlist();
     }
 
-    public static void adduser(String user) {
-        users.add(user);
-        String s = "";
-        for (String username : users) {
-            s += username + ",";
-        }
-        notifyObserver("CLIENTLIST:" + s);
-
-    }
-    
-    public static void removeUser(String user){
-        users.remove(user);
-        String s = "";
-        for (String username : users) {
-            s += username + ",";
-        }
-        notifyObserver("CLIENTLIST:" + s);
-    }
-
-    public static void unregister(IObserver deleteObservers) {
-
-        System.out.println("Observer " + deleteObservers + " deleted");
+    @Override
+    public void unregister(ClientThread deleteObservers)
+    {
         observers.remove(deleteObservers);
+        getClientlist();
 
     }
 
-    public static void notifyObserver(String s) {
+    private void getClientlist()
+    {
+        String s = "";
+        for (ClientThread thd : observers)
+        {
+            s += thd.getName() + ",";
+        }
+        notifyObserver("CLIENTLIST:" + s);
+    }
 
-        for (IObserver observer : observers) {
+    public void sendMessageAll(String msg)
+    {
+        String resmsg = "MSGRES:" + msg;
+        notifyObserver(resmsg);
+    }
+
+    public void sendMessageSingle(String msg, String username)
+    {
+        String resmsg = "MSGRES:" + msg;
+        notifyObserver(resmsg, username);
+    }
+
+    public void sendMessageMulti(String msg, String[] usernames)
+    {
+        String resmsg = "MSGRES:" + msg;
+        notifyObserver(resmsg, usernames);
+    }
+
+    @Override
+    public void notifyObserver(String s)
+    {
+        for (ClientThread observer : observers)
+        {
             observer.update(s);
-            
-            System.out.println("observers length: " +observers.size());
+        }
+    }
 
+    @Override
+    public void notifyObserver(String s, String username)
+    {
+        for (ClientThread observer : observers)
+        {
+            if (observer.getName().equals(username))
+            {
+                observer.update(s);
+            }
         }
 
     }
 
-    public static void notifyObserver(String s, String username) {
+    @Override
+    public void notifyObserver(String s, String[] usernames)
+    {
+        for (ClientThread observer : observers)
+        {
+            for (String user : usernames)
+            {
+                if (observer.getName().equals(user))
+                {
+                    observer.update(s);
+                }
+            }
+        }
 
     }
-
-    public static void notifyObserver(String s, String[] username) {
-
-    }
-
 }

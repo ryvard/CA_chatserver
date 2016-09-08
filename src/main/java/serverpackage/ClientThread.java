@@ -3,99 +3,119 @@ package serverpackage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author miaryvard
  */
-public class ClientThread extends Thread implements IObserver {
+public class ClientThread extends Thread implements IObserver
+{
 
     Socket clientSocket;
     int clientID;
-
     String user;
-    ClientServices cs = new ClientServices();
+    ClientServices cs = ClientServices.getClientServices();
     PrintWriter writer;
 
-    public ClientThread(Socket clientSocket, int clientID) {
+    public ClientThread(Socket clientSocket, int clientID)
+    {
         this.clientSocket = clientSocket;
         this.clientID = clientID;
-
     }
 
     @Override
-    public void run() {
+    public void run()
+    {
         handleClient();
-
     }
 
-    public void handleClient() {
-        try {
-
+    public void handleClient()
+    {
+        try
+        {
             Scanner scan = new Scanner(clientSocket.getInputStream());
             writer = new PrintWriter(clientSocket.getOutputStream(), true);
             writer.println("Du skal logge ind - f.eks. LOGIN:<username>");
+
             String msg = scan.nextLine();
+            String[] splitArr = msg.split(":");
+            String command = splitArr[0];
 
-            while (!msg.equals("LOGOUT:")) {
+            while (!msg.equals("LOGOUT:"))
+            {
+                switch (command)
+                {
+                    case "LOGIN":
+                        if (splitArr.length < 2)
+                        {
+                            writer.println("MISSING username - TYPE HELP TO SEE PROTOCOL");
+                            break;
+                        }
+                        user = splitArr[1];
 
-                if (msg.startsWith("LOGIN:")) {
-                    String[] splitArr = msg.split(":");
-                    user = splitArr[1];
-                    ClientServices.adduser(user);
-                    System.out.println("username før"+this.getName());
-                    this.setName(user);
-                    writer.println("Du er nu logget ind som '" + this.getName() + "'");
-                     
-                 
-                    System.out.println("username log: " + this.getName());
-                 
+                        this.setName(user);
+                        cs.register(this);
+                        writer.println("Du er nu logget ind som '" + this.getName() + "'");
+                        break;
+
+                    case "MSG":
+                        if (splitArr.length < 3)
+                        {
+                            writer.println("MISSING : - TYPE HELP TO SEE PROTOCOL");
+                            break;
+                        }
+                        if (splitArr[1].isEmpty() || splitArr[1].equals(""))
+                        {
+                            //writer.println("Du forsøger at sende en besked til alle");
+                            cs.sendMessageAll(this.getName() + ":" + splitArr[2]);
+                        } else
+                        {
+                            String[] userArr = splitArr[1].split(",");
+                            if (userArr.length == 1)
+                            {
+                                //writer.println("Du forsøger at sende en besked til en person");
+                                cs.sendMessageSingle(this.getName() + ":" + splitArr[2], userArr[0]);
+
+                            } else if (userArr.length > 1)
+                            {
+                                //writer.println("Du forsøger at sende en besked til flere personer");
+                                cs.sendMessageMulti(this.getName() + ":" + splitArr[2], userArr);
+                            }
+                        }
+                        break;
+                    case "HELP":
+                        writer.println("MSG::<message>");
+                        writer.println("MSG:<reciever>:<message>");
+                        writer.println("MSG:<reciever>,<reciever>...:<message>");
+                        writer.println("LOGIN:<username>");
+                        writer.println("LOGOUT:");
                 }
-
-                System.out.println("I WHILE LOOP");
-                if (msg.equals("HEJ")) {
-                    writer.println("HEJ MED DIG");
+                if (!command.equals("LOGIN") && !command.equals("MSG") && !command.equals("HELP"))
+                {
+                    writer.println("INVALID COMMAND - TYPE HELP TO SEE PROTOCOL");
                 }
-                writer.println("message recieved");
                 msg = scan.nextLine();
-
-                //msg = user+": " + scan.nextLine();
-                System.out.println("msg: " + msg);
-
+                splitArr = msg.split(":");
+                command = splitArr[0];
             }
-            
-            ClientServices.removeUser(user);
-            ClientServices.unregister(this);
+            cs.unregister(this);
+
             scan.close();
             writer.close();
             clientSocket.close();
 
-        } catch (IOException ex) {
+        } catch (IOException ex)
+        {
             Logger.getLogger(ClientThread.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override
-    public void update(String s) {
+    public void update(String s)
+    {
         writer.println(s);
     }
-
-    public String getUserName() {
-        if (user.isEmpty()) {
-            return "User is not set";
-        }
-        System.out.println("username: " + user);
-        return user;
-    }
-
 }

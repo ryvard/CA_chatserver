@@ -1,13 +1,6 @@
 package serverpackage;
 
-
 import serverpackage.IObserver;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -15,12 +8,9 @@ import serverpackage.IObserver;
  */
 public interface ISubject
 {
-    public void register(IObserver o);
-    public static void unregister(IObserver o){
-        
-    };
-    public static void notifyObserver(String s){
-        
-    };
-    
+    public void register(ClientThread o);
+    public void unregister(ClientThread o);
+    public void notifyObserver(String s);
+    public void notifyObserver(String s,String user);
+    public void notifyObserver(String s,String[] users);
 }
