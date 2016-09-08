@@ -1,4 +1,12 @@
-sep. 08, 2016 3:41:54 PM serverpackage.ChatServer runServer
+sep. 08, 2016 8:48:40 PM serverpackage.ChatServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 08, 2016 3:42:07 PM serverpackage.ChatServer runServer
+sep. 08, 2016 8:48:56 PM serverpackage.ChatServer runServer
 INFO: Connected to a client
+sep. 08, 2016 8:49:10 PM serverpackage.ClientThread handleClient
+INFO: JONAS set as username and added to observer list 
+sep. 08, 2016 8:49:47 PM serverpackage.ClientThread handleClient
+INFO: Closed a Connection
+sep. 08, 2016 9:01:21 PM serverpackage.ChatServer runServer
+INFO: Connected to a client
+sep. 08, 2016 9:02:02 PM serverpackage.ClientThread handleClient
+INFO: JONAS set as username and added to observer list 
