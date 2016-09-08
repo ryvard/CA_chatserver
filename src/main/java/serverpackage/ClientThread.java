@@ -96,7 +96,7 @@ public class ClientThread extends Thread implements IObserver
                 }
                 if (!command.equals("LOGIN") && !command.equals("MSG") && !command.equals("HELP"))
                 {
-                    writer.println("INVALID COMMAND - TYPE HELP TO SEE PROTOCOL");
+                    writer.println("INVALID COMMAND");
                 }
                 msg = scan.nextLine();
                 splitArr = msg.split(":");
