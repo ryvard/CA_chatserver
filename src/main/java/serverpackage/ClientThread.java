@@ -51,20 +51,21 @@ public class ClientThread extends Thread implements IObserver
                     case "LOGIN":
                         if (splitArr.length < 2)
                         {
-                            writer.println("MISSING username - TYPE HELP TO SEE PROTOCOL");
+                            writer.println("MISSING username - wrong command");
                             break;
                         }
                         user = splitArr[1];
 
                         this.setName(user);
                         cs.register(this);
+                        Logger.getLogger(Log.LOG_NAME).log(Level.INFO,String.format("%1$S set as username and added to observer list ", user));
                         writer.println("Du er nu logget ind som '" + this.getName() + "'");
                         break;
 
                     case "MSG":
                         if (splitArr.length < 3)
                         {
-                            writer.println("MISSING : - TYPE HELP TO SEE PROTOCOL");
+                            writer.println("MISSING : wrong command");
                             break;
                         }
                         if (splitArr[1].isEmpty() || splitArr[1].equals(""))
@@ -86,12 +87,12 @@ public class ClientThread extends Thread implements IObserver
                             }
                         }
                         break;
-                    case "HELP":
-                        writer.println("MSG::<message>");
-                        writer.println("MSG:<reciever>:<message>");
-                        writer.println("MSG:<reciever>,<reciever>...:<message>");
-                        writer.println("LOGIN:<username>");
-                        writer.println("LOGOUT:");
+//                    case "HELP":
+//                        writer.println("MSG::<message>");
+//                        writer.println("MSG:<reciever>:<message>");
+//                        writer.println("MSG:<reciever>,<reciever>...:<message>");
+//                        writer.println("LOGIN:<username>");
+//                        writer.println("LOGOUT:");
                 }
                 if (!command.equals("LOGIN") && !command.equals("MSG") && !command.equals("HELP"))
                 {
@@ -101,8 +102,8 @@ public class ClientThread extends Thread implements IObserver
                 splitArr = msg.split(":");
                 command = splitArr[0];
             }
+            Logger.getLogger(Log.LOG_NAME).log(Level.INFO,"Closed a Connection");
             cs.unregister(this);
-
             scan.close();
             writer.close();
             clientSocket.close();
