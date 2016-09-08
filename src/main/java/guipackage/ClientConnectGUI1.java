@@ -18,10 +18,7 @@ import java.util.logging.Logger;
  */
 public class ClientConnectGUI1 extends javax.swing.JFrame
 {
-
     static Socket s;
-    PrintWriter writer;
-
     /**
      * Creates new form ClientConnectGUI1
      */
@@ -112,17 +109,7 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
 
-        try
-        {
-            writer = new PrintWriter(s.getOutputStream(), true);
-            writer.println(jTextField1.getText());
-        } catch (IOException ex)
-        {
-            Logger.getLogger(ClientConnectGUI1.class.getName()).log(Level.SEVERE, null, ex);
-        } finally
-        {
-            writer.close();
-        }
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
