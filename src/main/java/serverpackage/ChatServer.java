@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /*
@@ -23,6 +25,7 @@ public class ChatServer {
     private int portNumb;
     private boolean keepRunning = true;
     private ClientServices cs = new ClientServices();
+    
     public static void main(String[] args) {
         
         try {
@@ -32,6 +35,7 @@ public class ChatServer {
                 }
                 String ip = args[0];
                 int port = Integer.parseInt(args[1]);
+                Log.setLogFile("logFile.txt", "ServerLog");
                 new ChatServer().runServer(ip, port);
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -45,7 +49,7 @@ public class ChatServer {
         int id = 0;
         this.ip = ip;
         this.portNumb = portNumb;
-               
+        Logger.getLogger(Log.LOG_NAME).log(Level.INFO,"Server started. Listening on: " + portNumb + ", bound to: " + ip);       
 
         try {
 
@@ -55,6 +59,7 @@ public class ChatServer {
             while (keepRunning) {
                 
                 Socket socket = serverSocket.accept();
+                Logger.getLogger(Log.LOG_NAME).log(Level.INFO,"Connected to a client");
                 ClientThread ct = new ClientThread(socket,id++);
 //                cs.register(ct);
                 ct.start();

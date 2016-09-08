@@ -61,13 +61,13 @@ public class ClientThread extends Thread implements IObserver
 //                    ClientServices.adduser(user);
                     System.out.println("username før" + this.getName());
                     this.setName(user);
+                    writer.println("Du er nu logget ind som '" + this.getName() + "'");
                     cs.register(this);
                     System.out.println("navn: " + this.getName());
 
-                    writer.println("Du er nu logget ind som '" + this.getName() + "'");
 
                     System.out.println("username log: " + this.getName());
-
+                    Logger.getLogger(Log.LOG_NAME).log(Level.INFO,String.format("%1$S logged in", user));
                 }
 
                 System.out.println("I WHILE LOOP");
@@ -84,6 +84,7 @@ public class ClientThread extends Thread implements IObserver
             }
 
 //            ClientServices.removeUser(user);
+            Logger.getLogger(Log.LOG_NAME).log(Level.INFO,String.format("%1$S logged out", user));
             ClientServices.unregister(this);
             scan.close();
             writer.close();

@@ -1,0 +1,6 @@
+sep. 08, 2016 10:20:12 AM serverpackage.ChatServer runServer
+INFO: Server started. Listening on: 8080, bound to: localhost
+sep. 08, 2016 10:20:16 AM serverpackage.ChatServer runServer
+INFO: Connected to a client
+sep. 08, 2016 10:20:27 AM serverpackage.ClientThread handleClient
+INFO: AA logged in
