@@ -19,11 +19,11 @@ import java.util.logging.Logger;
  */
 public class ClientConnectGUI1 extends javax.swing.JFrame
 {
+
     static Socket s;
-    Scanner scan; 
+    Scanner scan;
     PrintWriter writer;
-    
-    
+
     /**
      * Creates new form ClientConnectGUI1
      */
@@ -183,7 +183,7 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
     {//GEN-HEADEREND:event_sendBtnActionPerformed
         try
         {
-            
+
             writer = new PrintWriter(s.getOutputStream(), true);
             writer.println(sendText.getText());
             sendText.setText("");
@@ -218,7 +218,7 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
 
     private void ipTextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ipTextActionPerformed
     {//GEN-HEADEREND:event_ipTextActionPerformed
-        
+
     }//GEN-LAST:event_ipTextActionPerformed
 
     private void jTextArea1ComponentAdded(java.awt.event.ContainerEvent evt)//GEN-FIRST:event_jTextArea1ComponentAdded
@@ -226,10 +226,13 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
         try
         {
             scan = new Scanner(s.getInputStream());
-            while (!scan.nextLine().isEmpty())
-            {                
-                
-            jTextArea1.setText(scan.nextLine());
+            if (!scan.nextLine().isEmpty())
+            {
+
+                jTextArea1.setText(scan.nextLine());
+            } else
+            {
+                jTextArea1.setText("kan ikke scanne");
             }
             scan.close();
         } catch (IOException ex)
@@ -274,8 +277,6 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        
-
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()

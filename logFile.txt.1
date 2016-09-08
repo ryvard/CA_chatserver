@@ -1,12 +1,10 @@
-sep. 08, 2016 9:00:48 PM serverpackage.ChatServer runServer
+sep. 08, 2016 9:45:26 PM serverpackage.ChatServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 08, 2016 9:00:48 PM serverpackage.ChatServer runServer
+sep. 08, 2016 9:45:26 PM serverpackage.ChatServer runServer
 SEVERE: null
-java.net.BindException: Address already in use: JVM_Bind
-	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
-	at java.net.DualStackPlainSocketImpl.socketBind(DualStackPlainSocketImpl.java:106)
+java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method)
 	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387)
-	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:190)
 	at java.net.ServerSocket.bind(ServerSocket.java:375)
 	at java.net.ServerSocket.bind(ServerSocket.java:329)
 	at serverpackage.ChatServer.runServer(ChatServer.java:50)
