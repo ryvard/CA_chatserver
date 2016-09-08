@@ -54,8 +54,16 @@ public class ClientServices extends Thread implements ISubject {
 
     public static void unregister(IObserver deleteObservers) {
 
-        System.out.println("Observer " + deleteObservers + " deleted");
         observers.remove(deleteObservers);
+        System.out.println("Observer " + deleteObservers + " deleted");
+        String s = "";
+        for(IObserver observer : observers){
+            Thread tObserver = (Thread) observer;
+            s += tObserver.getName() + ",";
+        }
+        System.out.println("Size" + observers.size());
+        System.out.println("list names " + s );
+        notifyObserver("CLIENTLIST:" + s);
 
     }
 
