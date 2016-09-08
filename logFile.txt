@@ -1,3 +1,4 @@
+
 sep. 08, 2016 3:22:55 PM serverpackage.ChatServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
 sep. 08, 2016 3:23:14 PM serverpackage.ChatServer runServer
@@ -24,3 +25,11 @@ sep. 08, 2016 11:40:49 PM serverpackage.ClientThread handleClient
 INFO: MIA set as username and added to observer list 
 sep. 08, 2016 11:40:49 PM serverpackage.ClientThread handleClient
 INFO: Closed a Connection
+
+sep. 08, 2016 10:26:18 PM serverpackage.ChatServer runServer
+INFO: Server started. Listening on: 8080, bound to: localhost
+sep. 08, 2016 10:26:40 PM serverpackage.ChatServer runServer
+INFO: Connected to a client
+sep. 08, 2016 10:26:58 PM serverpackage.ClientThread handleClient
+INFO: MIA set as username and added to observer list 
+
