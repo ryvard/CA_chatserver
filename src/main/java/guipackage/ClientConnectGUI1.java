@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guipackage;
 
 import java.io.IOException;
@@ -19,11 +14,12 @@ import java.util.logging.Logger;
  */
 public class ClientConnectGUI1 extends javax.swing.JFrame
 {
-
-    static Socket s;
-    Scanner scan;
-    PrintWriter writer;
-
+    inputObserver observer = new inputObserver();
+    Socket s;
+//    Scanner scan; 
+//    PrintWriter writer;
+    
+    
     /**
      * Creates new form ClientConnectGUI1
      */
@@ -148,9 +144,9 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
                     .addComponent(portText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(connectBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(4, 4, 4)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendText, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sendBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -183,9 +179,9 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
     {//GEN-HEADEREND:event_sendBtnActionPerformed
         try
         {
-
-            writer = new PrintWriter(s.getOutputStream(), true);
-            writer.println(sendText.getText());
+//            writer = new PrintWriter(s.getOutputStream(), true);
+//            writer.println(sendText.getText());
+            observer.sendtext(sendText.getText());
             sendText.setText("");
         } catch (IOException ex)
         {
@@ -200,11 +196,12 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
 
     private void connectBtnActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_connectBtnActionPerformed
     {//GEN-HEADEREND:event_connectBtnActionPerformed
+        
         try
         {
             String ip = ipText.getText();
             int port = Integer.parseInt(portText.getText());
-            s = new Socket(ip, port);
+            s = observer.connect(ip, port);
         } catch (IOException ex)
         {
             Logger.getLogger(ClientConnectGUI1.class.getName()).log(Level.SEVERE, null, ex);
@@ -218,27 +215,24 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
 
     private void ipTextActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ipTextActionPerformed
     {//GEN-HEADEREND:event_ipTextActionPerformed
-
+        
     }//GEN-LAST:event_ipTextActionPerformed
 
     private void jTextArea1ComponentAdded(java.awt.event.ContainerEvent evt)//GEN-FIRST:event_jTextArea1ComponentAdded
     {//GEN-HEADEREND:event_jTextArea1ComponentAdded
-        try
-        {
-            scan = new Scanner(s.getInputStream());
-            if (!scan.nextLine().isEmpty())
-            {
-
-                jTextArea1.setText(scan.nextLine());
-            } else
-            {
-                jTextArea1.setText("kan ikke scanne");
-            }
-            scan.close();
-        } catch (IOException ex)
-        {
-            Logger.getLogger(ClientConnectGUI1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try
+//        {
+//            scan = new Scanner(s.getInputStream());
+//            while (!scan.nextLine().isEmpty())
+//            {                
+//                
+//            jTextArea1.setText(scan.nextLine());
+//            }
+//            scan.close();
+//        } catch (IOException ex)
+//        {
+//            Logger.getLogger(ClientConnectGUI1.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jTextArea1ComponentAdded
 
     /**
@@ -277,6 +271,8 @@ public class ClientConnectGUI1 extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
+        
+
         java.awt.EventQueue.invokeLater(new Runnable()
         {
             public void run()
