@@ -1,35 +1,14 @@
-
-sep. 08, 2016 3:22:55 PM serverpackage.ChatServer runServer
+sep. 09, 2016 4:26:06 PM serverpackage.ChatServer runServer
 INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 08, 2016 3:23:14 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 3:23:30 PM serverpackage.ClientThread handleClient
-INFO: EMMA set as username and added to observer list 
-sep. 08, 2016 3:23:45 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 3:23:51 PM serverpackage.ClientThread handleClient
-INFO: LASSE set as username and added to observer list 
-sep. 08, 2016 6:57:05 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 6:58:45 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 11:39:53 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 11:39:54 PM serverpackage.ClientThread handleClient
-INFO: MIA set as username and added to observer list 
-sep. 08, 2016 11:39:54 PM serverpackage.ClientThread handleClient
-INFO: Closed a Connection
-sep. 08, 2016 11:40:49 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 11:40:49 PM serverpackage.ClientThread handleClient
-INFO: MIA set as username and added to observer list 
-sep. 08, 2016 11:40:49 PM serverpackage.ClientThread handleClient
-INFO: Closed a Connection
-
-sep. 08, 2016 10:26:18 PM serverpackage.ChatServer runServer
-INFO: Server started. Listening on: 8080, bound to: localhost
-sep. 08, 2016 10:26:40 PM serverpackage.ChatServer runServer
-INFO: Connected to a client
-sep. 08, 2016 10:26:58 PM serverpackage.ClientThread handleClient
-INFO: MIA set as username and added to observer list 
+sep. 09, 2016 4:26:06 PM serverpackage.ChatServer runServer
+SEVERE: null
+java.net.BindException: Address already in use
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:387)
+	at java.net.ServerSocket.bind(ServerSocket.java:375)
+	at java.net.ServerSocket.bind(ServerSocket.java:329)
+	at serverpackage.ChatServer.runServer(ChatServer.java:51)
+	at serverpackage.ChatServer.main(ChatServer.java:34)
+	at guipackage.ClientProxyTest$1.run(ClientProxyTest.java:41)
+	at java.lang.Thread.run(Thread.java:745)
 

@@ -30,7 +30,7 @@ public class ChatServer
             }
             String ip = args[0];
             int port = Integer.parseInt(args[1]);
-            //Log.setLogFile("logFile.txt", "ServerLog");
+            Log.setLogFile("logFile.txt", "ServerLog");
             new ChatServer().runServer(ip, port);
         } catch (Exception ex)
         {
@@ -60,6 +60,7 @@ public class ChatServer
 
                 System.out.println("Connect to a client" + id);
             }
+            
 
         } catch (IOException ex)
         {

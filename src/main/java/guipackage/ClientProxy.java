@@ -24,8 +24,8 @@ public class ClientProxy extends Thread
     private PrintWriter writer;
     private String res;
     ClientConnectGUI1 gui;
-    
-    
+    private String[] reslist;
+
     public Socket connect(String ip, int port) throws IOException
     {
         s = new Socket(ip, port);
@@ -64,7 +64,9 @@ public class ClientProxy extends Thread
             System.out.println(parts[0] + " " + parts[1]);
             if (parts[0].equals("CLIENTLIST"))
             {
-                String[] reslist = parts[1].split(",");
+                System.out.println("inde i if");
+                reslist = parts[1].split(",");
+                System.out.println("reslist" + reslist[0]);
                 gui.userlistupdated(reslist);
             }
             if (parts[0].equals("MSGRES"))
@@ -72,7 +74,31 @@ public class ClientProxy extends Thread
                 gui.msgupdatet(parts[1], parts[2]);
             }
         }
-       
+
+    }
+
+    public String getreslist() throws IOException
+    {
+        Scanner scan = new Scanner(s.getInputStream());
+        System.out.println("Thread startet");
+        while (true)
+        {
+            res = scan.nextLine();
+            String[] parts = res.split(":");
+            if (parts[0].equals("CLIENTLIST"))
+            {
+                reslist = parts[1].split(",");
+            }
+
+            if (reslist[0].isEmpty())
+            {
+                return "No user";
+            } else
+            {
+                return reslist[0];
+            }
+        }
+
     }
 
     public void sendMSG(String users, String text) throws IOException

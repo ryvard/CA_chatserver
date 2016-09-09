@@ -59,109 +59,107 @@ public class ClientProxyTest
     {
     }
 
-    /**
-     * Test of connect method, of class ClientProxy.
-     */
-    @Test
-    public void testConnect() throws Exception
-    {
-        System.out.println("connect");
-        String ip = "";
-        int port = 0;
-        ClientProxy instance = new ClientProxy();
-        Socket expResult = null;
-        Socket result = instance.connect(ip, port);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of registrerObserver method, of class ClientProxy.
-     */
-    @Test
-    public void testRegistrerObserver()
-    {
-        System.out.println("registrerObserver");
-        ClientConnectGUI1 gui = null;
-        ClientProxy instance = new ClientProxy();
-        instance.registrerObserver(gui);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of run method, of class ClientProxy.
-     */
-    @Test
-    public void testRun()
-    {
-        System.out.println("run");
-        ClientProxy instance = new ClientProxy();
-        instance.run();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of scan method, of class ClientProxy.
-     */
-    @Test
-    public void testScan() throws Exception
-    {
-        System.out.println("scan");
-        ClientProxy instance = new ClientProxy();
-        instance.scan();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of sendMSG method, of class ClientProxy.
-     */
-    @Test
-    public void testSendMSG() throws Exception
-    {
-        System.out.println("sendMSG");
-        String users = "";
-        String text = "";
-        ClientProxy instance = new ClientProxy();
-        instance.sendMSG(users, text);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of connect method, of class ClientProxy.
+//     */
+//    @Test
+//    public void testConnect() throws Exception
+//    {
+//        System.out.println("connect");
+//        String ip = "";
+//        int port = 0;
+//        ClientProxy instance = new ClientProxy();
+//        Socket expResult = null;
+//        Socket result = instance.connect(ip, port);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of registrerObserver method, of class ClientProxy.
+//     */
+//    @Test
+//    public void testRegistrerObserver()
+//    {
+//        System.out.println("registrerObserver");
+//        ClientConnectGUI1 gui = null;
+//        ClientProxy instance = new ClientProxy();
+//        instance.registrerObserver(gui);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of run method, of class ClientProxy.
+//     */
+//    @Test
+//    public void testRun()
+//    {
+//        System.out.println("run");
+//        ClientProxy instance = new ClientProxy();
+//        instance.run();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of scan method, of class ClientProxy.
+//     */
+//    @Test
+//    public void testScan() throws Exception
+//    {
+//        System.out.println("scan");
+//        ClientProxy instance = new ClientProxy();
+//        instance.scan();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//
+//    /**
+//     * Test of sendMSG method, of class ClientProxy.
+//     */
+//    @Test
+//    public void testSendMSG() throws Exception
+//    {
+//        System.out.println("sendMSG");
+//        String users = "";
+//        String text = "";
+//        ClientProxy instance = new ClientProxy();
+//        instance.sendMSG(users, text);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of login method, of class ClientProxy.
      */
+    
     @Test
-    public void testLogin() throws Exception
+    public synchronized void testLogin() throws Exception
     {
-        
         System.out.println("login");
         ClientProxy client = new ClientProxy();
         client.connect("localhost", 8080);
         String username = "Mia";
         client.login(username);
-        System.out.println("før liste");
-        client.scan();
-        
-        System.out.println(username +" : ");
-        
-        
+        String result = client.getreslist();
+        assertEquals(username,result);
+       
     }
+    
 
-    /**
-     * Test of logout method, of class ClientProxy.
-     */
-    @Test
-    public void testLogout() throws Exception
-    {
-        System.out.println("logout");
-        ClientProxy instance = new ClientProxy();
-        instance.logout();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of logout method, of class ClientProxy.
+//     */
+//    @Test
+//    public void testLogout() throws Exception
+//    {
+//        System.out.println("logout");
+//        ClientProxy instance = new ClientProxy();
+//        instance.logout();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }
