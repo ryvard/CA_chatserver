@@ -62,8 +62,8 @@ public class ClientProxy extends Thread
             System.out.println("res: " + res);
             if (parts[0].equals("CLIENTLIST"))
             {
-
-                gui.userlistupdated(parts[1]);
+                String[] reslist = parts[1].split(",");
+                gui.userlistupdated(reslist);
             }
             if (parts[0].equals("MSGRES"))
             {
