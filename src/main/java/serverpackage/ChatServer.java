@@ -13,10 +13,11 @@ import java.util.logging.Logger;
  */
 public class ChatServer
 {
+
     private static ServerSocket serverSocket;
     private String ip;
     private int portNumb;
-    private boolean keepRunning = true;
+    private static boolean keepRunning = true;
     private ClientServices cs = ClientServices.getClientServices();
 
     public static void main(String[] args)
@@ -33,7 +34,7 @@ public class ChatServer
             new ChatServer().runServer(ip, port);
         } catch (Exception ex)
         {
-            Logger.getLogger(Log.LOG_NAME).log(Level.SEVERE,null, ex);
+            Logger.getLogger(Log.LOG_NAME).log(Level.SEVERE, null, ex);
             System.out.println(ex);
         }
     }
@@ -43,7 +44,7 @@ public class ChatServer
         int id = 0;
         this.ip = ip;
         this.portNumb = portNumb;
-        Logger.getLogger(Log.LOG_NAME).log(Level.INFO,"Server started. Listening on: " + portNumb + ", bound to: " + ip);
+        Logger.getLogger(Log.LOG_NAME).log(Level.INFO, "Server started. Listening on: " + portNumb + ", bound to: " + ip);
         try
         {
             serverSocket = new ServerSocket();
@@ -52,7 +53,7 @@ public class ChatServer
             while (keepRunning)
             {
                 Socket socket = serverSocket.accept();
-                Logger.getLogger(Log.LOG_NAME).log(Level.INFO,"Connected to a client");
+                Logger.getLogger(Log.LOG_NAME).log(Level.INFO, "Connected to a client");
                 ClientThread ct = new ClientThread(socket, id++);
                 ct.start();
                 ct.setName("anonym");
@@ -62,9 +63,14 @@ public class ChatServer
 
         } catch (IOException ex)
         {
-            Logger.getLogger(Log.LOG_NAME).log(Level.SEVERE,null, ex);
+            Logger.getLogger(Log.LOG_NAME).log(Level.SEVERE, null, ex);
             System.out.println(ex);
         }
+    }
+
+    public static void stopServer()
+    {
+        keepRunning = false;
     }
 
 }

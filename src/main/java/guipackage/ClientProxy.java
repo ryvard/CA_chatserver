@@ -24,7 +24,8 @@ public class ClientProxy extends Thread
     private PrintWriter writer;
     private String res;
     ClientConnectGUI1 gui;
-
+    String[] reslist;
+    
     public Socket connect(String ip, int port) throws IOException
     {
         s = new Socket(ip, port);
@@ -62,7 +63,7 @@ public class ClientProxy extends Thread
             System.out.println("res: " + res);
             if (parts[0].equals("CLIENTLIST"))
             {
-                String[] reslist = parts[1].split(",");
+                reslist = parts[1].split(",");
                 gui.userlistupdated(reslist);
             }
             if (parts[0].equals("MSGRES"))
